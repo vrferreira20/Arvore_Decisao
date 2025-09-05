@@ -36,5 +36,20 @@ modelo.fit(x_treinamento, y_treinamento)
 # Reproduzindo a árvore de decisão
 dot_data = export_graphviz(modelo, out_file=None, filled=True, feature_names=base.columns[:-1], class_names=True, rounded=True)
 graph = graphviz.Source(dot_data)
-graph.render("arvore_decisao", format="png")  # Salva a árvore em uma imagem PNG
-graph.view()  # Abre a imagem da árvore de decisão
+#graph.render("arvore_decisao", format="png")  # Salva a árvore em uma imagem PNG
+#graph.view()  # Abre a imagem da árvore de decisão
+
+# Fazendo previsões
+previsoes = modelo.predict(x_teste)
+#print(previsoes)
+
+# Avaliando o modelo
+acuracia = accuracy_score(y_teste, previsoes)
+precisao = precision_score(y_teste, previsoes, average='weighted')
+recall = recall_score(y_teste, previsoes, average='weighted')
+f1 = f1_score(y_teste, previsoes, average='weighted')
+print(f'Acurácia: {acuracia}, Precisão: {precisao}, Revocação: {recall}, F1-Score: {f1}')
+
+# Matriz de confusão
+report = classification_report(y_teste, previsoes)
+print(report)
