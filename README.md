@@ -1,1 +1,1 @@
-# Arvore_Decisao
+Esse código treina um modelo de Árvore de Decisão para prever se um cliente sofreu acidente, gera a árvore visualmente (com Graphviz) e depois avalia o desempenho do modelo com métricas de classificação.
